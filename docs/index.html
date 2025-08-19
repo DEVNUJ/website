@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isha & Anuj Love Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Caveat:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Caveat', cursive;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5f8 25%, #ffe8e8 50%, #fff0f5 75%, #fdf2f8 100%);
+            color: #8b5a6b;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .background-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff9eb5;
+            animation: float 6s ease-in-out infinite;
+            font-size: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9, #f48fb1);
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(248, 187, 217, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #ad1457;
+            text-shadow: 2px 2px 4px rgba(173, 20, 87, 0.3);
+            margin-bottom: 20px;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: #c2185b;
+            font-family: 'Dancing Script', cursive;
+            animation: fadeInUp 2s ease-out 0.5s both;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, #ff9eb5, #f8bbd9, #ff9eb5);
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(255, 158, 181, 0.5);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(248, 187, 217, 0.3);
+            border: 3px solid #f8bbd9;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(248, 187, 217, 0.4);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+            border-left-color: #f8bbd9;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+            border-right-color: #f8bbd9;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff9eb5, #f8bbd9);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(248, 187, 217, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(248, 187, 217, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(248, 187, 217, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(248, 187, 217, 0); }
+        }
+
+        .image-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 3px solid #f8bbd9;
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #ad1457;
+            text-align: center;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: image-container;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .timeline-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ad1457;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .timeline-text {
+            font-size: 1.2rem;
+            color: #8b5a6b;
+            line-height: 1.8;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .decorative-element {
+            position: absolute;
+            color: #ff9eb5;
+            opacity: 0.6;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff9eb5, #f8bbd9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(248, 187, 217, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+            margin-top: 80px;
+        }
+
+        .footer h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ad1457;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            font-size: 1.3rem;
+            color: #c2185b;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                left: 60px !important;
+                margin-left: 0;
+            }
+
+            .timeline-content::before {
+                left: -30px !important;
+                border-right-color: #f8bbd9 !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-icon {
+                left: 30px;
+                transform: translateY(-50%);
+            }
+
+            .timeline-text {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-hearts">
+        <!-- Hearts will be generated by JavaScript -->
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="Taylor Swift - Love Story [8xg3vE8Ie_E].mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-control" onclick="toggleMusic()">🎵</button>
+
+    <header class="header">
+        <h1>Isha & Anuj Love Story</h1>
+    </header>
+
+    <div class="timeline">
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">💕</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <!-- Replace with your image -->
+                    <img src="IMG_1581.PNG" alt="First Date">
+                </div>
+                <div class="timeline-date"><h3>31st May, 2023</h3></div>
+                <div class="timeline-text">
+                    Wednesday, 31st May, 2023. Remeber esa? after planning and plotting of when to meet and how to meet we ended up meeting in ratnapark ko bridge muni and had a walk across central kathmandu in a hot ass day?? it was so pure and we both were shy and this was my first picture i clicked of us! Yeah its only a feet tara hey I WAS SHYYYYYS
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">☕</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_1580.PNG" alt="First Pic" style="display: ;">
+                </div>
+                <div class="timeline-date">First Pic together & Kiss day</div>
+                <div class="timeline-text">
+                    OMG this day is so special hai esaaa? OUR FIRST KISS and our debut together in video! we were tryanna dance lol ani i was pulling your cheeks and all baby! I really miss those days esa!
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">❤️</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="Snapchat-1204311900 11.52.53 am.JPG" alt="fun dates" style="display: ;">
+                </div>
+                <div class="timeline-date">OUR CUTE LITTLE DATES IN LOCAL</div>
+                <div class="timeline-text">
+                    Remember us planning late night ma kati baje bhetne and kasari bhetne and all?? it was so cute! i didnt have scooter back then and i used to rock up in micro and indrive! also remeber when I used to wait in kathmandu mall and when going towards local i used to say "timilai thaya cha hami hideko baato ma prithivi narayan shah ni hidekoo thiyo??" I miss walking with you esaa! i really do!
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🏠</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_3706.jpg" alt="Moving in together" style="display: ;">
+                </div>
+                <div class="timeline-date">Esaaa's visit in my house</div>
+                <div class="timeline-text">
+                    THIS WAS A BIG STEP! Smuggling u inside my home with mero tala basne aunty still in house??!! tara it was all worth it esaa!! it was thakka a day beofre our 2nd anniversary and you cooked some for us and we even went out to eat! U rocked mero hoodie ma btw! and thank you for yr hair band ;)
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 5 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">✈️</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_3974.jpg" alt="First trip together" style="display: ;">
+                    
+                </div>
+                <div class="timeline-date">16th August, 2023</div>
+                <div class="timeline-text">
+                   This was an hard day...holding in my tears and putting a smile in face. We cried so hard yo din rati looking at the video that u made...I am so grateful that I met u esa and with out u or if this was anyone other LDR would be so hard. U have made this so worth it! I love you baby
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 6 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🌟</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_4080.PNG" alt="Special milestone" style="display: ;">
+                    
+                </div>
+                <div class="timeline-date">LDR HIT AND IT HIT HARD</div>
+                <div class="timeline-text">
+                    This is hard isn't it baby? Loving in facetime, arguing in face times and everything in facetime. It is crazy thar we are still in this and we might have spend more hours online than met physically.. this fact is mix of both; sad that we haven't met much; and happy that we are still so strong and trust each other! I LOVE YOU AND APPRECIATE YOU SO MUCH FOR THIS ESAA! 
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 7 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🎉</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="956f6aca-9c4a-450a-a665-fb97fc611faa.JPG" alt="Celebration" style="display: ;">
+                 
+                </div>
+                <div class="timeline-date">Living our life and bit of jealousy</div>
+                <div class="timeline-text">
+                    Well well well..imagine your girlfriends slaying so hard but you not being there physically to appreciate her! this is hard but tthe main fact is we lived our life. You attended some fest and all..u looked so pretty everytime and that might have made me jealous some how.hehe but the main part is how we let each other have time of their life while being there for each other! 
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 8 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🌹</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_7557.JPG" alt="Romantic moment" style="display: ;">
+                    
+                </div>
+                <div class="timeline-date">ESAA'S SUPRISE AND GET TOGETHER!!</div>
+                <div class="timeline-text">
+                    I will never match you in this regard esaa..the fact you were sick and even had to fight with your father to suprise me on our 1st year!! Please esa I want you to know that I am forever greateful and I really see the efforts you put in! I will never let that slide and always be indebt with you for the love and support! ps: this pic is so cute so i chose this for our get together!
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 9 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">💍</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_9421.jpg" alt="Engagement or commitment" style="display: ;">
+                    
+                </div>
+                <div class="timeline-date">FAST FORWARD TO LDRs and SHES BACK IN KTM</div>
+                <div class="timeline-text">
+                    I know everytime you came, I was one of the main reason. Esaa I know i might not be the most decisive person on where to go date and all but I promise you this with my whole heart out that everywhere we went, I loved you and loved the time i got to spend with you. PS: thank you for the monster meal treat yo din hehe. <3
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 10 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🎊</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_1582.PNG" alt="Wedding or special ceremony" style="display: ;">
+                    
+                </div>
+                <div class="timeline-date">ISHA KO BIRTH DAYYYYYYYY WOOHOOOO</div>
+                <div class="timeline-text">
+                    I know I can't spoil you with fancy gifts, chocolates and I wish I could've given you the world. But please know, it’s not that I don’t care it’s just that sometimes I can’t always give the material things I want to. Happy birthday esaaaa!! btw wheres the dress i gave you baby!?? pls wear it na someday!!
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 11 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🌈</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="IMG_1033.JPG" alt="Recent memory" style="display: ;">
+                   
+                </div>
+                <div class="timeline-date">PHOTOBOOTHHH</div>
+                <div class="timeline-text">
+                    That day at the photobooth was one of my favorites. We laughed like we didn’t care about anything else like I always told you to like show yr teeth and laugh yr chest out! Seeing you so free, so full of joy… you were glowing. In that moment, you were the most beautiful I’ve ever seen you esaaa
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Item 12 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">🌟</div>
+            <div class="timeline-content">
+                <div class="image-container">
+                    <img src="PHOTO-2025-07-26-17-24-34.jpg" alt="Future dreams" style="display: ;">
+                </div>
+                <div class="timeline-date">Our Future Together </div>
+                <div class="timeline-text">
+                    I am sorry for everything I’ve done to hurt you. I know I’ve messed up more than once, but somehow, you still find it in you to believe in us. I am more than thankful for everything you’ve done for me and for us. You’ve given me love, patience, and chances I didn’t always deserve. That kind of love means everything to me. I see a future with you, and I want to earn it. I’ll do better, respect you more, and give you the happiness you’ve always given me.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <h2>Forever & Always</h2>
+        <p>Our love will continue esaaa</p>
+        <div style="margin-top: 20px; font-size: 2rem;">💕 ∞ 💕</div>
+    </footer>
+
+    <script>
+        // Background music control
+        let isPlaying = false;
+        const music = document.getElementById('backgroundMusic');
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                document.querySelector('.music-control').innerHTML = '🎵';
+            } else {
+                music.play();
+                document.querySelector('.music-control').innerHTML = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Auto-play music when page loads (note: many browsers block autoplay)
+        window.addEventListener('load', () => {
+            music.play().then(() => {
+                isPlaying = true;
+                document.querySelector('.music-control').innerHTML = '⏸️';
+            }).catch(() => {
+                console.log('Autoplay blocked by browser');
+            });
+        });
+
+        // Generate floating hearts
+        function createHearts() {
+            const heartsContainer = document.querySelector('.background-hearts');
+            const heartSymbols = ['💕', '💖', '💗', '💝', '💘', '🌸', '🌺', '✨'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Smooth scrolling for timeline items
+        function animateOnScroll() {
+            const items = document.querySelectorAll('.timeline-item');
+            
+            items.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                const itemVisible = 150;
+                
+                if (itemTop < window.innerHeight - itemVisible) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Add decorative elements randomly
+        function addDecorativeElements() {
+            const decorativeSymbols = ['✨', '🌟', '💫', '🌸', '🌺', '🦋', '🎀'];
+            const timeline = document.querySelector('.timeline');
+            
+            for (let i = 0; i < 8; i++) {
+                const element = document.createElement('div');
+                element.className = 'decorative-element';
+                element.innerHTML = decorativeSymbols[Math.floor(Math.random() * decorativeSymbols.length)];
+                element.style.right = Math.random() * 100 + 'px';
+                element.style.top = Math.random() * 2000 + 200 + 'px';
+                element.style.animationDelay = Math.random() * 3 + 's';
+                timeline.appendChild(element);
+            }
+        }
+
+        // Image loading handler
+        function setupImageHandlers() {
+            const imageContainers = document.querySelectorAll('.image-container');
+            
+            imageContainers.forEach(container => {
+                const img = container.querySelector('img');
+                const placeholder = container.querySelector('div');
+                
+                if (img.src && img.src !== window.location.href) {
+                    img.onload = function() {
+                        img.style.display = 'block';
+                        placeholder.style.display = 'none';
+                    };
+                    
+                    img.onerror = function() {
+                        img.style.display = 'none';
+                        placeholder.style.display = 'flex';
+                    };
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            addDecorativeElements();
+            setupImageHandlers();
+            
+            // Add scroll animation
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+
+        // Add some interactive hover effects
+        document.addEventListener('mousemove', (e) => {
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach((heart, index) => {
+                if (index % 3 === 0) { // Only affect every third heart for performance
+                    const rect = heart.getBoundingClientRect();
+                    const heartCenterX = rect.left + rect.width / 2;
+                    const heartCenterY = rect.top + rect.height / 2;
+                    
+                    const distance = Math.sqrt(
+                        Math.pow(e.clientX - heartCenterX, 2) + 
+                        Math.pow(e.clientY - heartCenterY, 2)
+                    );
+                    
+                    if (distance < 100) {
+                        heart.style.transform = `scale(${1.5 - distance / 100})`;
+                    } else {
+                        heart.style.transform = 'scale(1)';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
